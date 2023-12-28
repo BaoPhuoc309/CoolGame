@@ -1,0 +1,8 @@
+.store-wrapper {
+  .store-list {
+    @media screen and (min-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 32px;
+    }
+  }
+}
