@@ -10,7 +10,7 @@ interface Stores {
         results: []
     };
     storesStatus: string;
-    storesSingle: [];
+    storesSingle: object;
     storesSingleStatus: string;
 }
 
@@ -19,12 +19,17 @@ const initialState: Stores = {
         results: []
     },
     storesStatus: STATUS.IDLE,
-    storesSingle: [],
+    storesSingle: {},
     storesSingleStatus: STATUS.IDLE
 }
 
 export const fetchAsyncStores = createAsyncThunk("stores/fetch", async () => {
     const { data } = await axios.get(`${apiUrl.storesURL}?${API_KEY}`);
+    return data
+})
+
+export const fetchAsyncStoresDetails = createAsyncThunk("storesDetails/fetch", async (id: number) => {
+    const { data } = await axios.get(`${apiUrl.storesURL}/${id}?${API_KEY}`);
     return data
 })
 
@@ -45,6 +50,19 @@ const storeSlice = createSlice({
 
             .addCase(fetchAsyncStores.rejected, (state) => {
                 state.storesStatus = STATUS.FAILED
+            })
+
+            .addCase(fetchAsyncStoresDetails.pending, (state) => {
+                state.storesSingleStatus = STATUS.LOADING
+            })
+
+            .addCase(fetchAsyncStoresDetails.fulfilled, (state, action) => {
+                state.storesSingleStatus = STATUS.SUCCEEDED
+                state.storesSingle = action.payload
+            })
+
+            .addCase(fetchAsyncStoresDetails.rejected, (state) => {
+                state.storesSingleStatus = STATUS.FAILED
             })
     }
 })

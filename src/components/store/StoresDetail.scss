@@ -1,0 +1,23 @@
+.detail-wrapper {
+  padding: 32px 0;
+
+  .detail-grid {
+    &__right {
+      .card-title {
+        font-size: 32px;
+        display: inline-block;
+        margin-bottom: 12px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    padding: 60px 0;
+
+    .detail-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      align-items: stretch;
+    }
+  }
+}

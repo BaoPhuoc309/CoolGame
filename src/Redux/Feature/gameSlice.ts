@@ -8,12 +8,13 @@ interface Games {
     games: {
         results: [];
         next: string | null;
-        previous: number | null;
+        previous: string | null;
     },
     gamesStatus: string;
     gamesSingle: object;
     gamesSingleStatus: string,
 }
+
 
 const initialState: Games = {
     games: {
@@ -31,10 +32,10 @@ export const fetchAsyncGames = createAsyncThunk("games/fetch", async (page: numb
     return data;
 });
 
-export const fetchAsyncGameDetails = createAsyncThunk("games/details", async (id) => {
-    const { data } = await axios.get(`${apiUrl.gamesURL}${id}?${API_KEY}`);
+export const fetchAsyncGameDetails = createAsyncThunk('game/details/fetch', async (id: number) => {
+    const { data } = await axios.get(`${apiUrl.gamesURL}/${id}?${API_KEY}`);
     return data;
-});
+})
 
 const gameSlice = createSlice({
     name: "game",

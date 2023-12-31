@@ -1,9 +1,9 @@
-export const Router_APP  = {
+export const Router_APP = {
     HOME: "/",
     ERROR: "/error",
     VIEWGAMEALL: "/games",
-    VIEWGAMEDETAILS: "/games/:id",
+    VIEWGAMEDETAILS: "/games/:gameId",
     VIEWSTOREALL: "/stores",
-    VIEWSTOREDETAILS: "/stores/:id",
+    VIEWSTOREDETAILS: "/stores/:storeId",
     VIEWCREATORALL: "/creators",
 }

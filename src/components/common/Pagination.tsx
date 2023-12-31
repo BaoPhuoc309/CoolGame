@@ -5,7 +5,7 @@ import "./Pagination.scss";
 interface Pagination {
   pageHandler: (page: number) => void;
   nextPage?: string | number | null;
-  prevPage?: number | null | undefined;
+  prevPage?: string | null | undefined;
   currentPage?: number | null | undefined;
 }
 

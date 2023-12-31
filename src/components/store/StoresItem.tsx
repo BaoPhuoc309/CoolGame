@@ -8,9 +8,10 @@ interface StoreProp {
     image_background?: string;
     domain?: string;
     games_count?: string;
-    games?: { id: number | string; name: string }[];
+    games?: { id: number; name: string }[];
   };
 }
+
 const StoresItem: React.FC<StoreProp> = ({ storeItem }) => {
   return (
     <div className="card store-item-wrapper d-grid">
@@ -22,7 +23,7 @@ const StoresItem: React.FC<StoreProp> = ({ storeItem }) => {
       </div>
       <div className="card-text d-flex flex-column justify-content-center">
         <h5 className="card-title text-uppercase fw-7 text-uppercase">
-          <Link className="text-white" to={`stores/${storeItem?.id}`}>
+          <Link className="text-white" to={`/stores/${storeItem?.id}`}>
             {storeItem?.name}
           </Link>
         </h5>

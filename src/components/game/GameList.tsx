@@ -6,7 +6,7 @@ interface Game {
 
 interface GameListProps {
   sliceValue?: number;
-  games: Game[]; // Update with the actual type of your games
+  games: Game[];
 }
 
 const GameList: React.FC<GameListProps> = ({
